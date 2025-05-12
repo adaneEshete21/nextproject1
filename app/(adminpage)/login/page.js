@@ -1,7 +1,9 @@
 "use client";
+import crypto from "crypto";
 import { useState } from "react";
-
+import Router from "next/navigation"; 
 const Login = () => {
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -50,7 +52,10 @@ async function handleSubmit(event) {
     email,
     phone,
   };
+  const token = crypto.createHash("sha256").update(password).digest("hex");
 
+  // Store the token in localStorage
+  localStorage.setItem("accessToken", token);
   try {
     const response = await fetch("/api/login", {
       method: "POST",
@@ -63,9 +68,10 @@ async function handleSubmit(event) {
     if (!response.ok) {
       throw new Error("Failed to login. Please try again.");
     }
+     const data = await response.json();
+     console.log("Login successful:", data);
 
-    const data = await response.json();
-    console.log("Login successful:", data);
+   
     // Handle successful login (e.g., redirect or show success message)
   } catch (err) {
     console.error(err.message);
@@ -158,7 +164,7 @@ async function handleSubmit(event) {
             />
           </div>
 
-          {/* Submit Button */}
+       
           <div className="text-center">
             <button
               type="submit"

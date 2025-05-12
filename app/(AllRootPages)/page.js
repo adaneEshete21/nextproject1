@@ -23,12 +23,13 @@ const Home = () => {
             Connecting businesses to the world, one shipment at a time,seamless
             logistics solutions for your global trade needs.
           </p>
-          <button
+          <Link
+           href={'/service'}
             className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 "
-            style={{ display: "block", margin: "0 auto" }}
+            style={{ display: "block", margin: "center", textAlign: "center" ,width: "150px", marginLeft:'500px'}}
           >
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
       <div className="flex justify-center">
@@ -127,7 +128,7 @@ const Home = () => {
 
       <div
         className="flex gap-6 justify-center items-stretch py-8  w-full max-w-screen-lg px-4 py-6"
-        style={{ marginLeft: "100px", marginRight: "0px" }}
+        style={{ marginLeft: "330px", marginRight: "0px" }}
       >
         <div
           className="bg-primary text-white p-6 rounded-lg flex-1 min-h-[350px] flex flex-col justify-between shadow-md"
